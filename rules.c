@@ -145,6 +145,7 @@ void otherToSU() {
 
 	// Misc fixes for dumpsys command
 	sepol_allow("system_server", "su", "fifo_file", "use");
+	sepol_allow("system_server", "su", "fifo_file", "write");
 	sepol_allow("priv_app", "su", "fifo_file", "write");
 	sepol_allow("untrusted_app", "su", "fifo_file", "write");
 	sepol_allow("system_server", "su", "fifo_file", "getattr");
