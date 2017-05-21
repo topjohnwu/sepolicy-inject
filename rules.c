@@ -87,7 +87,7 @@ void suRights() {
 	sepol_allow("servicemanager", "su", "process", "getattr");
 	sepol_allow("servicemanager", "su", "binder", "transfer");
 	sepol_allow("system_server", "su", "binder", "call");
-	sepol_allow("system_server", "su", "fd", "use");
+	sepol_allow(ALL, "su", "fd", "use");
 
 	sepol_allow("su", "servicemanager", "dir", "search");
 	sepol_allow("su", "servicemanager", "dir", "read");
@@ -142,6 +142,12 @@ void otherToSU() {
 	// suMiscL6
 	if (sepol_exists("audioserver"))
 		sepol_allow("audioserver", "audioserver", "process", "execmem");
+
+	// Misc fixes for dumpsys command
+	sepol_allow("system_server", "su", "fifo_file", "write");
+	sepol_allow("priv_app", "su", "fifo_file", "write");
+	sepol_allow("untrusted_app", "su", "fifo_file", "write");
+	sepol_allow("system_server", "su", "fifo_file", "getattr");
 }
 
 // Minimal boot image patch, Samsung requires these patches
