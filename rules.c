@@ -234,6 +234,46 @@ void sepol_min_rules() {
 	// xperms
 	if (policydb->policyvers >= 30)
 		sepol_allowxperm("domain", "devpts", "chr_file", "0x5400-0x54FF");
+
+	sepol_allow(ALL, "labeledfs", "filesystem", "associate");
+	sepol_allow(ALL, "tmpfs", "filesystem", "associate");
+
+	// For /dev
+	sepol_allow("su", "device", "file", ALL);
+	sepol_allow("su", "device", "fifo_file", ALL);
+	sepol_allow("su", "device", "lnk_file", ALL);
+	sepol_allow("su", "device", "dir", ALL);
+
+	// For rootfs
+	sepol_allow("su", "rootfs", "file", ALL);
+	sepol_allow("su", "rootfs", "fifo_file", ALL);
+	sepol_allow("su", "rootfs", "lnk_file", ALL);
+	sepol_allow("su", "rootfs", "dir", ALL);
+
+	// For system/cache/data files
+	sepol_allow("su", "system_file", "file", ALL);
+	sepol_allow("su", "system_file", "fifo_file", ALL);
+	sepol_allow("su", "system_file", "lnk_file", ALL);
+	sepol_allow("su", "system_file", "dir", ALL);
+	sepol_allow("su", "system_data_file", "file", ALL);
+	sepol_allow("su", "system_data_file", "fifo_file", ALL);
+	sepol_allow("su", "system_data_file", "lnk_file", ALL);
+	sepol_allow("su", "system_data_file", "dir", ALL);
+	sepol_allow("su", "shell_data_file", "file", ALL);
+	sepol_allow("su", "shell_data_file", "fifo_file", ALL);
+	sepol_allow("su", "shell_data_file", "lnk_file", ALL);
+	sepol_allow("su", "shell_data_file", "dir", ALL);
+	sepol_allow("su", "cache_file", "file", ALL);
+	sepol_allow("su", "cache_file", "fifo_file", ALL);
+	sepol_allow("su", "cache_file", "lnk_file", ALL);
+	sepol_allow("su", "cache_file", "dir", ALL);
+	sepol_allow("su", "sdcardfs", "file", ALL);
+	sepol_allow("su", "sdcardfs", "fifo_file", ALL);
+	sepol_allow("su", "sdcardfs", "lnk_file", ALL);
+	sepol_allow("su", "sdcardfs", "dir", ALL);
+
+	sepol_typetrans("init", "su", "process", "su", NULL);
+	sepol_typetrans("shell", "su", "process", "su", NULL);
 }
 
 void sepol_med_rules() {
