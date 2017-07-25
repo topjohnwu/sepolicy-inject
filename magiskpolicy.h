@@ -4,6 +4,15 @@
 #ifndef _MAGISKPOLICY_H
 #define _MAGISKPOLICY_H
 
+#ifndef ARG_MAX
+#define ARG_MAX 4096
+#endif
+
+#ifndef xstr
+#define str(a) #a
+#define xstr(a) str(a)
+#endif
+
 #include <stdlib.h>
 
 #define ALL NULL

@@ -225,6 +225,7 @@ void sepol_min_rules() {
 	sepol_allow("su", "kernel", "process", "setsched");
 	sepol_allow("su", "labeledfs", "filesystem", "mount");
 	sepol_allow("su", "labeledfs", "filesystem", "unmount");
+	sepol_allow("su", "labeledfs", "filesystem", "remount");
 	sepol_allow("kernel", "system_data_file", "file", "read");
 
 	// For changing attributes
