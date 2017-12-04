@@ -24,6 +24,9 @@ void suRights() {
 	sepol_allow("servicemanager", "su", "binder", "transfer");
 	sepol_allow("system_server", "su", "binder", "call");
 	sepol_allow("system_server", "su", "fd", "use");
+	sepol_allow("system_server", "su", "fifo_file", "write");
+	sepol_allow("audioserver", "su", "fd", "use");
+	sepol_allow("audioserver", "su", "fifo_file", "write");
 
 	sepol_allow("su", "servicemanager", "dir", "search");
 	sepol_allow("su", "servicemanager", "dir", "read");
