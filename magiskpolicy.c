@@ -471,7 +471,7 @@ int magiskpolicy_main(int argc, char *argv[]) {
 
 	vec_destroy(&rules);
 
-	if (live)
+	if (live && !outfile)
 		outfile = SELINUX_LOAD;
 
 	if (outfile && dump_policydb(outfile)) {
